@@ -1,5 +1,5 @@
-import React from 'react';
-import {Map, GoogleApiWrapper, Marker} from 'google-maps-react';
+import React from "react";
+import {Map, GoogleApiWrapper, Marker} from "google-maps-react";
 
 export class MapContainer extends React.Component {
   render() {
@@ -21,5 +21,5 @@ export class MapContainer extends React.Component {
 }
 
 export default GoogleApiWrapper(
-  {apiKey: ''} // TODO - Setup .env variables
+  {apiKey: ""} // TODO - Setup .env variables
 )(MapContainer);
