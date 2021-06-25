@@ -1,10 +1,10 @@
 import React from "react";
-import BeerButton from "./BeerButton";
+import BeerIcon from "./BeerIcon";
 
-const StartButton = () => (
+const StartButton = ({handleStart}) => (
   <div>
-    <button style={{ height: "200px", width: "200px" }}>
-      <BeerButton></BeerButton>
+    <button onClick={handleStart} style={{ height: "200px", width: "200px" }}>
+      <BeerIcon></BeerIcon>
     </button>
   </div>
 );
