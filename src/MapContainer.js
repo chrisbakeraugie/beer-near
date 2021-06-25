@@ -11,7 +11,13 @@ export class MapContainer extends React.Component {
         lat:this.props.initialCenter.lat,
         lng:this.props.initialCenter.lng,
       }}><Marker
-      title="Randolph's Beer"
+      title={this.props.title}
+      position={{ 
+        lat:this.props.position.lat,
+        lng:this.props.position.lng
+      }}></Marker>
+      <Marker
+      title={this.props.title}
       position={{ 
         lat:this.props.initialCenter.lat,
         lng:this.props.initialCenter.lng
