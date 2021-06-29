@@ -14,6 +14,7 @@ function App() {
    */
   const [breweries, setBreweries] = React.useState([]);
   const [clientCoords, setClientCoords] = React.useState({});
+  const [bounds, setBounds] = React.useState(null);
 
   
   /**
@@ -36,6 +37,10 @@ function App() {
           reject(err);
         }, { enableHighAccuracy: true, timeout: 30000 });
     });
+  };
+
+  const handleBounds = (newBounds) => {
+    setBounds(newBounds);
   };
 
   const handleStart = async () => {
@@ -63,6 +68,8 @@ function App() {
               lng: clientCoords.lng
             }}
             breweries={breweries}
+            bounds={bounds}
+            handleBounds={handleBounds}
              />
         </div> :
         <StartButton handleStart={handleStart}></StartButton>

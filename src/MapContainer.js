@@ -3,12 +3,6 @@ import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
 
 
 export class MapContainer extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      bounds: null
-    };
-  }
 
   /**
    * Creates bounds using client browser and brewery coords
@@ -16,14 +10,16 @@ export class MapContainer extends React.Component {
   makeBounds = () => {
     let points = [
       { lat: Number(this.props.initialCenter.lat), lng: Number(this.props.initialCenter.lng) },
-      { lat: Number(this.props.breweries[0].latitude), lng: Number(this.props.breweries[0].longitude) },
+      { lat: Number(this.props.breweries[1].latitude), lng: Number(this.props.breweries[1].longitude) },
     ];
 
     let bounds = new this.props.google.maps.LatLngBounds();
     for (var i = 0; i < points.length; i++) {
       bounds.extend(points[i]);
     }
-    this.setState({ bounds });
+    // this.setState({ bounds });
+    this.props.handleBounds(bounds);
+
   }
 
   /**
@@ -42,8 +38,15 @@ export class MapContainer extends React.Component {
           height: '50%'
         }}
         onReady={this.onReady}
-        bounds={this.state.bounds}
+        bounds={this.props.bounds}
       >
+      <Marker
+      title="You"
+      position={{
+        lat: this.props.initialCenter.lat,
+        lng: this.props.initialCenter.lng
+      }}
+      />
         {this.props.breweries.map((brewery) => {
           return (
             <Marker
