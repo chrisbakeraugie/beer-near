@@ -6,6 +6,7 @@ import MapContainer from "./MapContainer";
 const BREWERY_API_BASE = "https://api.openbrewerydb.org/breweries";
 const BREWERY_API_BY_DISTANCE = "by_dist=";
 
+
 function App() {
 
   /**
@@ -14,6 +15,7 @@ function App() {
   const [breweries, setBreweries] = React.useState([]);
   const [clientCoords, setClientCoords] = React.useState({});
 
+  
   /**
    * Returns client browser coordinates (truncated to 4 decimal points)
    * @returns {object} {lat: number, lng: number}
@@ -51,16 +53,19 @@ function App() {
 
   return (
     <div className="App">
-      <StartButton handleStart={handleStart}></StartButton>
+
 
       {breweries.length > 0 ?
-        <MapContainer
-          initialCenter={{
-            lat: clientCoords.lat,
-            lng: clientCoords.lng
-          }}
-          breweries={breweries} /> :
-        <div>Map goes here</div>
+        <div>
+          <MapContainer
+            initialCenter={{
+              lat: clientCoords.lat,
+              lng: clientCoords.lng
+            }}
+            breweries={breweries}
+             />
+        </div> :
+        <StartButton handleStart={handleStart}></StartButton>
       }
       {breweries.map(brewery => {
         return (
