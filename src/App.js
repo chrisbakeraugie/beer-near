@@ -15,8 +15,9 @@ function App() {
   const [breweries, setBreweries] = React.useState([]);
   const [clientCoords, setClientCoords] = React.useState({});
   const [bounds, setBounds] = React.useState(null);
+  const [breweryCount, setBreweryCount] = React.useState(0);
 
-  
+
   /**
    * Returns client browser coordinates (truncated to 4 decimal points)
    * @returns {object} {lat: number, lng: number}
@@ -43,6 +44,10 @@ function App() {
     setBounds(newBounds);
   };
 
+  const onNext = () => {
+    setBreweryCount(breweryCount + 1);
+  };
+
   const handleStart = async () => {
     try {
       const coords = await getClientCoords();
@@ -58,8 +63,6 @@ function App() {
 
   return (
     <div className="App">
-
-
       {breweries.length > 0 ?
         <div>
           <MapContainer
@@ -67,19 +70,18 @@ function App() {
               lat: clientCoords.lat,
               lng: clientCoords.lng
             }}
-            breweries={breweries}
+            brewery={breweries[breweryCount]}
             bounds={bounds}
             handleBounds={handleBounds}
-             />
+          />
         </div> :
-        <StartButton handleStart={handleStart}></StartButton>
+        <div>
+          <StartButton handleStart={handleStart}></StartButton>
+        </div>
       }
-      {breweries.map(brewery => {
-        return (
-          <div key={brewery.id}>{brewery.name}</div>
-        );
-      })}
-
+      <button type="button" onClick={onNext}>
+        Next Thing
+      </button>
     </div>
   );
 }
