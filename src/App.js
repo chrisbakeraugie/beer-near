@@ -1,7 +1,9 @@
+/* eslint-disable react/prop-types */
 import "./App.css";
 import React from "react";
 import StartButton from "./StartButton";
 import MapContainer from "./MapContainer";
+import Brewery from "./Brewery";
 
 const BREWERY_API_BASE = "https://api.openbrewerydb.org/breweries";
 const BREWERY_API_BY_DISTANCE = "by_dist=";
@@ -57,7 +59,14 @@ function App() {
           setBreweries(result);
         });
     } catch (error) {
-      alert("Add a second option to get locations");
+      if (process.env.NODE_ENV === "development") {
+        fetch(`${BREWERY_API_BASE}?${BREWERY_API_BY_DISTANCE}${35.376},${-97.4179}`)
+          .then(res => res.json()).then(result => {
+            setBreweries(result);
+          });
+      } else {
+        alert("Add a second option to get locations");
+      }
     }
   };
 
@@ -65,20 +74,16 @@ function App() {
     <div className="App">
       {breweries.length > 0 ?
         <div>
-          <MapContainer
-            initialCenter={{
-              lat: clientCoords.lat,
-              lng: clientCoords.lng
-            }}
+          <Brewery
             brewery={breweries[breweryCount]}
-            bounds={bounds}
-            handleBounds={handleBounds}
+            breweryCount={breweryCount}
           />
         </div> :
         <div>
           <StartButton handleStart={handleStart}></StartButton>
         </div>
       }
+
       <button type="button" onClick={onNext}>
         Next Thing
       </button>
