@@ -3,6 +3,7 @@ import React from "react";
 function BeerButton() {
   return (
     <svg
+    id="start-button"
       xmlns="http://www.w3.org/2000/svg"
       x="0"
       y="0"

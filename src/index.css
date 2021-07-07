@@ -9,6 +9,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
+/* --------------------------Start Screen----------------------------------- */
+#start-div{
+  padding-top: 25vh;
+}
+
+#start-button{
+  
+}
+
+
+/* --------------------------Beer Components----------------------------------- */
+
 .centered-text {
   margin: auto;
   padding: 60px;
@@ -32,9 +44,36 @@ code {
   gap: 0px 0px;
   grid-auto-flow: row;
   grid-template-areas: "Map Map Map Name Name Name Name" "Map Map Map Address Address Address Address" "Map Map Map Phone Phone Website Website" "Map Map Map Next-Brewery Next-Brewery Next-Brewery Next-Brewery";
-  min-height: 75vh;
+  min-height: 85vh;
   background-color: rgba(255, 166, 0, 0.863);
   border-radius: 10mm;
+}
+
+@media only screen and (max-width: 900px){
+  .brewery-container {
+    max-height: 75vh;
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr 1fr; 
+    grid-template-rows: 1fr 1fr 0.6fr 1.4fr 1.3fr 0.9fr 0.8fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+      "Map Map Map Map"
+      "Map Map Map Map"
+      "Map Map Map Map"
+      "Name Name Name Name"
+      "Address Address Address Address"
+      "Phone Phone Website Website"
+      "Next-Brewery Next-Brewery Next-Brewery Next-Brewery"; 
+  }
+
+  .centered-text{
+    padding: 20px;
+  }
+
+  .centered-contact{
+    padding: 15px;
+  }
+
 }
 
 .Map {
