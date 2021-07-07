@@ -33,6 +33,9 @@ const BreweryContainer = ({ brewery, breweryCount, onNext }) => {
    * Removes http, https, and www parts of the urls
    */
   const shortenedUrl = () => {
+    if(brewery.website_url === undefined || brewery.website_url === null){
+      return;
+    }
     let shortenedUrl = brewery.website_url;
     shortenedUrl = shortenedUrl.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "");
     return shortenedUrl;
@@ -44,7 +47,7 @@ const BreweryContainer = ({ brewery, breweryCount, onNext }) => {
       <div className="Name"><h1 className="centered-text">{brewery.name}</h1></div>
       <div className="Address"><h1 className="centered-text">{brewery.street}, {brewery.city}, {brewery.state}</h1></div>
       <div className="Phone"><h5 className="centered-text"><a className="phone-number" href={"tel:" + brewery.phone}>{phoneNumber()}</a></h5></div>
-      <div className="Website"><h6 className="centered-text"><a href={brewery.website_url} target="_blank">{shortenedUrl()}</a></h6></div>
+      <div className="Website"><h6 className="centered-text"><a href={brewery.website_url} target="_blank" rel="noreferrer">{shortenedUrl()}</a></h6></div>
       <div className="Next-Brewery"><NextBrewery onNext={onNext} breweryCount={breweryCount}/></div>
     </div>
   );
