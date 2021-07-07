@@ -25,6 +25,7 @@ const Brewery = ({ brewery, breweryCount }) => {
     <div>
       <h1>The {breweryCount + 1}{distRank()} closest brewery to you is {brewery.name}</h1>
       <h2>The address is {brewery.street}, {brewery.city}, {brewery.state}</h2>
+      <p>You can call them at {brewery.phone} (maybe double check that one) or visit their website at <a target="_blank" href={brewery.website_url} rel="noreferrer">{brewery.website_url}</a></p>
     </div>
   );
 };
