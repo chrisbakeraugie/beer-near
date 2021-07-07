@@ -11,3 +11,29 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.brewery-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1.2fr 1.3fr 0.9fr 0.6fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "Map Map Map Name Name Name Name"
+    "Map Map Map Address Address Address Address"
+    "Map Map Map Phone Phone Website Website"
+    "Map Map Map Next-Brewery Next-Brewery Next-Brewery Next-Brewery";
+  min-height: 50vh;
+}
+
+.Map { grid-area: Map; }
+
+.Name { grid-area: Name; }
+
+.Address { grid-area: Address; }
+
+.Phone { grid-area: Phone; }
+
+.Website { grid-area: Website; }
+
+.Next-Brewery { grid-area: Next-Brewery; }

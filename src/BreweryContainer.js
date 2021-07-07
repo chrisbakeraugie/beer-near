@@ -7,7 +7,7 @@ import React from "react";
  * @prop brewery - a brewery object
  * @prop breweryCount - number of breweries counted through
  */
-const BreweryContainer = ({ brewery, breweryCount }) => {
+const BreweryContainer = ({ brewery, breweryCount, onNext }) => {
   /**
    * Returns ranking ("st", "nd", "rd") based on count in brewery
    */
@@ -23,16 +23,26 @@ const BreweryContainer = ({ brewery, breweryCount }) => {
     return ("th");
   };
   return (
-    <div class="container">
-      <div class="Brewery-Component"></div>
-      <div class="Map"></div>
-      <div class="Name"></div>
-      <div class="Address"></div>
-      <div class="Phone"></div>
-      <div class="Website"></div>
-      <div class="Next-Brewery"></div>
+    <div className="brewery-container">
+      <div className="Map">THE MAP</div>
+      <div className="Name"><h1>{brewery.name}</h1></div>
+      <div className="Address"><h1>{brewery.street}, {brewery.city}, {brewery.state}</h1></div>
+      <div className="Phone"><a href={"tel:" + brewery.phone}>{brewery.phone}</a></div>
+      <div className="Website"><p><a href={brewery.website_url}>{brewery.website_url}</a></p></div>
+      <div className="Next-Brewery"><button onClick={onNext}>Next Brewery</button></div>
     </div>
   );
+/**
+ * Template for grid (copy-paste)
+ */
+//   <div className="brewery-container">
+//   <div className="Map"></div>
+//   <div className="Name"></div>
+//   <div className="Address"></div>
+//   <div className="Phone"></div>
+//   <div className="Website"></div>
+//   <div className="Next-Brewery"></div>
+// </div>
 };
 
 export default BreweryContainer;
