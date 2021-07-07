@@ -11,7 +11,7 @@ code {
 
 .centered-text {
   margin: auto;
-  padding: 40px;
+  padding: 60px;
 }
 
 .phone-number {
@@ -20,13 +20,14 @@ code {
 }
 
 .brewery-container {
+  margin: 10px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1.2fr 1.3fr 0.9fr 0.6fr;
   gap: 0px 0px;
   grid-auto-flow: row;
   grid-template-areas: "Map Map Map Name Name Name Name" "Map Map Map Address Address Address Address" "Map Map Map Phone Phone Website Website" "Map Map Map Next-Brewery Next-Brewery Next-Brewery Next-Brewery";
-  min-height: 50vh;
+  min-height: 75vh;
   background-color: rgba(255, 166, 0, 0.863);
   border-radius: 10mm;
 }
@@ -65,4 +66,7 @@ code {
 
 .Next-Brewery {
   grid-area: Next-Brewery;
+  margin: 5px;
+  padding: 20px;
+  padding-bottom: 20px;
 }

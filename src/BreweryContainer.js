@@ -1,5 +1,5 @@
 import React from "react";
-
+import NextBrewery from "./NextBrewery";
 
 /**
  * Brewery card
@@ -8,20 +8,6 @@ import React from "react";
  * @prop breweryCount - number of breweries counted through
  */
 const BreweryContainer = ({ brewery, breweryCount, onNext }) => {
-  /**
-   * Returns ranking ("st", "nd", "rd") based on count in brewery
-   */
-  const distRank = () => {
-    const endingDigit = Number(breweryCount.toString().split("")[breweryCount.toString().split("").length - 1]) + 1;
-    if (endingDigit === 1 && breweryCount !== 10) {
-      return ("st");
-    } else if (endingDigit === 2 && breweryCount !== 11) {
-      return ("nd");
-    } else if (endingDigit === 3 && breweryCount !== 12) {
-      return ("rd");
-    }
-    return ("th");
-  };
 
   /**
  * Returns phone number (from props) with prettier display
@@ -44,11 +30,11 @@ const BreweryContainer = ({ brewery, breweryCount, onNext }) => {
   };
 
   /**
-   * Removes 
+   * Removes http, https, and www parts of the urls
    */
   const shortenedUrl = () => {
     let shortenedUrl = brewery.website_url;
-    shortenedUrl = shortenedUrl.replace(/^(?:https?:\/\/)?(?:www\.)?/i ,"");
+    shortenedUrl = shortenedUrl.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "");
     return shortenedUrl;
   };
 
@@ -59,7 +45,7 @@ const BreweryContainer = ({ brewery, breweryCount, onNext }) => {
       <div className="Address"><h1 className="centered-text">{brewery.street}, {brewery.city}, {brewery.state}</h1></div>
       <div className="Phone"><h5 className="centered-text"><a className="phone-number" href={"tel:" + brewery.phone}>{phoneNumber()}</a></h5></div>
       <div className="Website"><h6 className="centered-text"><a href={brewery.website_url} target="_blank">{shortenedUrl()}</a></h6></div>
-      <div className="Next-Brewery"><button onClick={onNext}>Next Brewery</button></div>
+      <div className="Next-Brewery"><NextBrewery onNext={onNext} breweryCount={breweryCount}/></div>
     </div>
   );
 
