@@ -18,7 +18,7 @@ function App() {
   /**
    * State management for the list of breweries
    */
-  const [breweries, setBreweries] = React.useState([
+  const [breweries, setBreweries] = React.useState([ // TODO: REMOVE INITIAL CONDITIONS BEFORE DEPLOYMENT
     { "id": 14927, "obdb_id": "the-bronx-brewery-bronx", "name": "The Bronx Brewery", "brewery_type": "micro", "street": "856 E 136th St", "address_2": null, "address_3": null, "city": "Bronx", "state": "New York", "county_province": null, "postal_code": "10454-3509", "country": "United States", "longitude": "-73.91064054", "latitude": "40.801861", "phone": "7184021000", "website_url": "http://www.thebronxbrewery.com", "updated_at": "2018-08-24T00:00:00.000Z", "created_at": "2018-07-24T00:00:00.000Z" },
     { "id": 12184, "obdb_id": "lic-beer-project-long-island-city", "name": "LIC Beer Project", "brewery_type": "micro", "street": "3928 23rd St", "address_2": null, "address_3": null, "city": "Long Island City", "state": "New York", "county_province": null, "postal_code": "11101-4817", "country": "United States", "longitude": "-73.942849", "latitude": "40.75063", "phone": "9178326840", "website_url": "http://licbeerproject.com", "updated_at": "2018-08-24T00:00:00.000Z", "created_at": "2018-07-24T00:00:00.000Z" },
     {"id":11335,"obdb_id":"harlem-brewing-co-new-york","name":"Harlem Brewing Co","brewery_type":"contract","street":"2 W 123rd St","address_2":null,"address_3":null,"city":"New York","state":"New York","county_province":null,"postal_code":"10027-5623","country":"United States","longitude":"-73.94532799","latitude":"40.8058068","phone":"8885596735","website_url":"http://www.harlembrewingcompany.com","updated_at":"2018-08-24T00:00:00.000Z","created_at":"2018-07-24T00:00:00.000Z"},

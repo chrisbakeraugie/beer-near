@@ -1,15 +1,22 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.centered-text {
+  margin: auto;
+  padding: 40px;
+}
+
+.phone-number {
+  text-decoration: none;
+  color: black;
 }
 
 .brewery-container {
@@ -18,22 +25,44 @@ code {
   grid-template-rows: 1.2fr 1.3fr 0.9fr 0.6fr;
   gap: 0px 0px;
   grid-auto-flow: row;
-  grid-template-areas:
-    "Map Map Map Name Name Name Name"
-    "Map Map Map Address Address Address Address"
-    "Map Map Map Phone Phone Website Website"
-    "Map Map Map Next-Brewery Next-Brewery Next-Brewery Next-Brewery";
+  grid-template-areas: "Map Map Map Name Name Name Name" "Map Map Map Address Address Address Address" "Map Map Map Phone Phone Website Website" "Map Map Map Next-Brewery Next-Brewery Next-Brewery Next-Brewery";
   min-height: 50vh;
+  background-color: rgba(255, 166, 0, 0.863);
+  border-radius: 10mm;
 }
 
-.Map { grid-area: Map; }
+.Map {
+  grid-area: Map;
+}
 
-.Name { grid-area: Name; }
+.Name {
+  grid-area: Name;
+  background-color: rgba(255, 255, 255, 0.295);
+  border-radius: 10mm;
+  margin: 5px;
+}
 
-.Address { grid-area: Address; }
+.Address {
+  grid-area: Address;
+  background-color: rgba(255, 255, 255, 0.295);
+  border-radius: 10mm;
+  margin: 5px;
+}
 
-.Phone { grid-area: Phone; }
+.Phone {
+  grid-area: Phone;
+  background-color: rgba(255, 255, 255, 0.295);
+  border-radius: 10mm;
+  margin: 5px;
+}
 
-.Website { grid-area: Website; }
+.Website {
+  grid-area: Website;
+  background-color: rgba(255, 255, 255, 0.295);
+  border-radius: 10mm;
+  margin: 5px;
+}
 
-.Next-Brewery { grid-area: Next-Brewery; }
+.Next-Brewery {
+  grid-area: Next-Brewery;
+}
