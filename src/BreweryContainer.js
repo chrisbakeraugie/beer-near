@@ -1,12 +1,13 @@
 import React from "react";
 
+
 /**
  * Brewery card
  * 
  * @prop brewery - a brewery object
  * @prop breweryCount - number of breweries counted through
  */
-const Brewery = ({ brewery, breweryCount }) => {
+const BreweryContainer = ({ brewery, breweryCount }) => {
   /**
    * Returns ranking ("st", "nd", "rd") based on count in brewery
    */
@@ -22,12 +23,16 @@ const Brewery = ({ brewery, breweryCount }) => {
     return ("th");
   };
   return (
-    <div>
-      <h1>The {breweryCount + 1}{distRank()} closest brewery to you is {brewery.name}</h1>
-      <h2>The address is {brewery.street}, {brewery.city}, {brewery.state}</h2>
-      <p>You can call them at {brewery.phone} (maybe double check that one) or visit their website at <a target="_blank" href={brewery.website_url} rel="noreferrer">{brewery.website_url}</a></p>
+    <div class="container">
+      <div class="Brewery-Component"></div>
+      <div class="Map"></div>
+      <div class="Name"></div>
+      <div class="Address"></div>
+      <div class="Phone"></div>
+      <div class="Website"></div>
+      <div class="Next-Brewery"></div>
     </div>
   );
 };
 
-export default Brewery;
+export default BreweryContainer;

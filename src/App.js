@@ -3,9 +3,10 @@ import "./App.css";
 import React from "react";
 import StartButton from "./StartButton";
 import MapContainer from "./MapContainer";
-import Brewery from "./Brewery";
+import Brewery from "./BreweryContainer";
 import { Nav, Navbar } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import BreweryContainer from "./BreweryContainer";
 
 
 const BREWERY_API_BASE = "https://api.openbrewerydb.org/breweries";
@@ -85,7 +86,7 @@ function App() {
 
       {breweries.length > 0 ?
         <div>
-          <Brewery
+          <BreweryContainer
             brewery={breweries[breweryCount]}
             breweryCount={breweryCount}
           />
