@@ -16,8 +16,7 @@ const BreweryContainer = ({
   handleBounds,
   bounds,
   handleBtnPhrase,
-  btnPhrase,
-  winDim
+  btnPhrase
 }) => {
 
   /**
@@ -59,7 +58,6 @@ const BreweryContainer = ({
         brewery={brewery}
         handleBounds={handleBounds}
         bounds={bounds}
-        winDim={winDim}
       /></div>
       <div className="Name"><h3 className="centered-text">{brewery.name}</h3></div>
       <div className="Address"><h3 className="centered-text">{brewery.street}, {brewery.city}, {brewery.state}</h3></div>
