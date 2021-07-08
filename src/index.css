@@ -52,6 +52,8 @@ code {
 @media only screen and (max-width: 900px) {
   .brewery-container {
     height: unset;
+    background-color: unset;
+    background-image: linear-gradient(rgb(248, 237, 214) 20%,rgba(255, 166, 0, 0.267) 21%,orange 22%);
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 0.6fr .5fr .5fr 0.4fr 0.3fr;
