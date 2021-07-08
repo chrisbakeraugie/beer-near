@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React from "react";
 import { Button } from "react-bootstrap";
 
 const NextBrewery = ({ onNext, breweryCount, handleBtnPhrase, btnPhrase }) => {

@@ -31,6 +31,9 @@ function App() {
   const [bounds, setBounds] = React.useState(null);
   const [breweryCount, setBreweryCount] = React.useState(0);
   const [btnPhrase, setBtnPhrase] = React.useState("Next Brewery");
+  const [winDim, setWinDim] = React.useState({
+    winWidth: window.innerWidth
+  });
 
   const loader = new Loader({
     apiKey: process.env.REACT_APP_GOOGLE_API
@@ -140,6 +143,7 @@ function App() {
             bounds={bounds}
             handleBtnPhrase={handleBtnPhrase}
             btnPhrase={btnPhrase}
+            winDim={winDim}
           />
         </div> :
         <div id="start-div">

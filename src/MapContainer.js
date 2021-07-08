@@ -26,14 +26,29 @@ export class MapContainer extends React.Component {
   // onReady = () => {
   //   this.makeBounds();
   // }
+
+  psuedoResponsive = () => {
+    if(window.innerWidth < 1000){
+      return {
+        width: "80vw",
+        height: "70vh"
+      }
+    } else {
+      return {
+        width: "40vw",
+        height: "65vh"
+      }
+    }
+  }
   
   render() {
     return (
       <Map
         containerStyle={{
           position: "relative",
-          width: "40vw",
-          height: "75vh",
+          width: this.psuedoResponsive().width,
+          height: this.psuedoResponsive().height,
+          margin: "auto"
         }}
         google={this.props.google}
         onReady={this.onReady}
@@ -44,7 +59,6 @@ export class MapContainer extends React.Component {
         streetViewControl={false}
         rotateControl={false}
         fullscreenControl={false}
-        className="rounded"        
       >
         <Marker
           title="You"

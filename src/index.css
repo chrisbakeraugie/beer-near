@@ -42,25 +42,34 @@ code {
   gap: 0px 0px;
   grid-auto-flow: row;
   grid-template-areas: "Map Map Map Name Name Name Name" "Map Map Map Address Address Address Address" "Map Map Map Phone Phone Website Website" "Map Map Map Next-Brewery Next-Brewery Next-Brewery Next-Brewery";
-  height: 79vh;
+  height: 70vh;
   background-color: rgba(255, 166, 0, 0.863);
   border-radius: 10mm;
+  border-top-left-radius: 0mm;
+  border-bottom-left-radius: 0mm;
 }
 
 @media only screen and (max-width: 900px) {
   .brewery-container {
-    max-height: 75vh;
+    height: unset;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 0.6fr 1.4fr 1.3fr 0.9fr 0.8fr;
+    grid-template-rows: 1fr 1fr 0.6fr .5fr .5fr 0.4fr 0.3fr;
     gap: 0px 0px;
     grid-template-areas: "Map Map Map Map" "Map Map Map Map" "Map Map Map Map" "Name Name Name Name" "Address Address Address Address" "Phone Phone Website Website" "Next-Brewery Next-Brewery Next-Brewery Next-Brewery";
+    border-radius: 10mm;
+    border-top-right-radius: 0mm;
+    border-top-left-radius: 0mm;
   }
   .centered-text {
     padding: 20px;
   }
   .centered-contact {
     padding: 15px;
+  }
+  .Map{
+    min-height: 20vh;
+    padding-top: 25px;
   }
 }
 
