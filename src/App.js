@@ -118,7 +118,7 @@ function App() {
    * Update bounds when brewery count changes
    */
   React.useEffect(() => {
-    if(breweries.length === 0){
+    if (breweries.length === 0) {
       return;
     }
     makeBounds();

@@ -19,7 +19,7 @@ export class MapContainer extends React.Component {
   //   }
   //   this.props.handleBounds(bounds);
   // }
-  
+
   // /**
   //  * Called when map is loaded and ready on the page
   //  */
@@ -28,7 +28,7 @@ export class MapContainer extends React.Component {
   // }
 
   psuedoResponsive = () => {
-    if(window.innerWidth < 1000){
+    if (window.innerWidth < 1000) {
       return {
         width: "80vw",
         height: "70vh"
@@ -40,7 +40,7 @@ export class MapContainer extends React.Component {
       }
     }
   }
-  
+
   render() {
     return (
       <Map
