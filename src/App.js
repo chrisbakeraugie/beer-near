@@ -152,7 +152,7 @@ function App() {
   );
 }
 export default GoogleApiWrapper(
-  { apiKey: "AIzaSyCUZLSFgbbVmFwrBjrHX_BPcIsnbDDiwlw" }
+  { apiKey: process.env.REACT_APP_GOOGLE_API }
 )(App);
 
 // export default App;
