@@ -4,38 +4,36 @@ import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
 
 export class MapContainer extends React.Component {
 
-  /**
-   * Creates bounds using client browser and brewery coords
-   */
-  makeBounds = () => {
-    let points = [
-      { lat: Number(this.props.initialCenter.lat), lng: Number(this.props.initialCenter.lng) },
-      { lat: Number(this.props.brewery.latitude), lng: Number(this.props.brewery.longitude) },
-    ];
+  // /**
+  //  * Creates bounds using client browser and brewery coords
+  //  */
+  // makeBounds = () => {
+  //   let points = [
+  //     { lat: Number(this.props.clientCoords.lat), lng: Number(this.props.clientCoords.lng) },
+  //     { lat: Number(this.props.brewery.latitude), lng: Number(this.props.brewery.longitude) },
+  //   ];
 
-    console.log(points)
-    let bounds = new this.props.google.maps.LatLngBounds();
-    for (var i = 0; i < points.length; i++) {
-      bounds.extend(points[i]);
-    }
-    // this.setState({ bounds });
-    this.props.handleBounds(bounds);
-  }
+  //   let bounds = new this.props.google.maps.LatLngBounds();
+  //   for (var i = 0; i < points.length; i++) {
+  //     bounds.extend(points[i]);
+  //   }
+  //   this.props.handleBounds(bounds);
+  // }
   
-  /**
-   * Called when map is loaded and ready on the page
-   */
-  onReady = () => {
-    this.makeBounds();
-  }
+  // /**
+  //  * Called when map is loaded and ready on the page
+  //  */
+  // onReady = () => {
+  //   this.makeBounds();
+  // }
   
   render() {
     return (
       <Map
         containerStyle={{
           position: "absolute",
-          width: "50%",
-          height: "50%"
+          width: "30vw",
+          height: "85vh",
         }}
         google={this.props.google}
         onReady={this.onReady}
@@ -45,8 +43,8 @@ export class MapContainer extends React.Component {
         <Marker
           title="You"
           position={{
-            lat: this.props.initialCenter.lat,
-            lng: this.props.initialCenter.lng
+            lat: this.props.clientCoords.lat,
+            lng: this.props.clientCoords.lng
           }}
         />
         <Marker

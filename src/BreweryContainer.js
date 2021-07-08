@@ -1,5 +1,6 @@
 import React from "react";
 import NextBrewery from "./NextBrewery";
+import MapContainer from "./MapContainer";
 
 /**
  * Brewery card
@@ -7,7 +8,7 @@ import NextBrewery from "./NextBrewery";
  * @prop brewery - a brewery object
  * @prop breweryCount - number of breweries counted through
  */
-const BreweryContainer = ({ brewery, breweryCount, onNext }) => {
+const BreweryContainer = ({ brewery, breweryCount, onNext, clientCoords, handleBounds, bounds }) => {
 
   /**
  * Returns phone number (from props) with prettier display
@@ -33,7 +34,7 @@ const BreweryContainer = ({ brewery, breweryCount, onNext }) => {
    * Removes http, https, and www parts of the urls
    */
   const shortenedUrl = () => {
-    if(brewery.website_url === undefined || brewery.website_url === null){
+    if (brewery.website_url === undefined || brewery.website_url === null) {
       return;
     }
     let shortenedUrl = brewery.website_url;
@@ -43,12 +44,17 @@ const BreweryContainer = ({ brewery, breweryCount, onNext }) => {
 
   return (
     <div className="brewery-container">
-      <div className="Map">THE MAP</div>
+      <div className="Map"><MapContainer
+        clientCoords={clientCoords}
+        brewery={brewery}
+        handleBounds={handleBounds}
+        bounds={bounds}
+      /></div>
       <div className="Name"><h1 className="centered-text">{brewery.name}</h1></div>
       <div className="Address"><h1 className="centered-text">{brewery.street}, {brewery.city}, {brewery.state}</h1></div>
       <div className="Phone"><h5 className="centered-contact"><a className="phone-number" href={"tel:" + brewery.phone}>{phoneNumber()}</a></h5></div>
       <div className="Website"><h6 className="centered-contact"><a href={brewery.website_url} target="_blank" rel="noreferrer">{shortenedUrl()}</a></h6></div>
-      <div className="Next-Brewery"><NextBrewery onNext={onNext} breweryCount={breweryCount}/></div>
+      <div className="Next-Brewery"><NextBrewery onNext={onNext} breweryCount={breweryCount} /></div>
     </div>
   );
 

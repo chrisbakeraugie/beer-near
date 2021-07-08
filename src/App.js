@@ -7,7 +7,8 @@ import Brewery from "./BreweryContainer";
 import { Nav, Navbar } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import BreweryContainer from "./BreweryContainer";
-
+import { GoogleApiWrapper } from "google-maps-react";
+import { Loader } from "@googlemaps/js-api-loader";
 
 const BREWERY_API_BASE = "https://api.openbrewerydb.org/breweries";
 const BREWERY_API_BY_DISTANCE = "by_dist=";
@@ -30,6 +31,9 @@ function App() {
   const [bounds, setBounds] = React.useState(null);
   const [breweryCount, setBreweryCount] = React.useState(0);
 
+  const loader = new Loader({
+    apiKey: process.env.REACT_APP_GOOGLE_API
+  });
 
   /**
    * Returns client browser coordinates (truncated to 4 decimal points)
@@ -83,6 +87,35 @@ function App() {
     }
   };
 
+  /**
+   * Use Google API to create new bounds based on coordinates
+   */
+  const makeBounds = () => {
+    let points = [
+      { lat: Number(clientCoords.lat), lng: Number(clientCoords.lng) },
+      { lat: Number(breweries[breweryCount].latitude), lng: Number(breweries[breweryCount].longitude) },
+    ];
+
+    let bounds;
+    loader.load().then(() => {
+      bounds = new window.google.maps.LatLngBounds();
+      for (var i = 0; i < points.length; i++) {
+        bounds.extend(points[i]);
+      }
+      handleBounds(bounds);
+    });
+  };
+
+  /**
+   * Update bounds when brewery count changes
+   */
+  React.useEffect(() => {
+    if(breweries.length === 0){
+      return;
+    }
+    makeBounds();
+  }, [breweryCount, breweries]);
+
   return (
     <div className="App">
       <Nav className="justify-content-center">
@@ -97,16 +130,22 @@ function App() {
             brewery={breweries[breweryCount]}
             breweryCount={breweryCount}
             onNext={onNext}
+            clientCoords={clientCoords}
+            handleBounds={handleBounds}
+            bounds={bounds}
           />
         </div> :
         <div id="start-div">
-        <h1>Beer Near</h1>
-        <h3>Find the closest brewery to you</h3>
+          <h1>Beer Near</h1>
+          <h3>Find the closest brewery to you</h3>
           <StartButton handleStart={handleStart}></StartButton>
         </div>
       }
     </div>
   );
 }
+export default GoogleApiWrapper(
+  { apiKey: process.env.REACT_APP_GOOGLE_API }
+)(App);
 
-export default App;
+// export default App;
