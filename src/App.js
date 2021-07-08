@@ -2,10 +2,10 @@
 import "./App.css";
 import React from "react";
 import StartButton from "./StartButton";
-import MapContainer from "./MapContainer";
-import Brewery from "./BreweryContainer";
-import { Nav, Navbar } from "react-bootstrap";
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import MapContainer from "./MapContainer";
+// import Brewery from "./BreweryContainer";
+import { Nav } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 import BreweryContainer from "./BreweryContainer";
 import { GoogleApiWrapper } from "google-maps-react";
 import { Loader } from "@googlemaps/js-api-loader";
@@ -145,7 +145,7 @@ function App() {
   );
 }
 export default GoogleApiWrapper(
-  { apiKey: process.env.REACT_APP_GOOGLE_API }
+  { apiKey: "AIzaSyCUZLSFgbbVmFwrBjrHX_BPcIsnbDDiwlw" }
 )(App);
 
 // export default App;

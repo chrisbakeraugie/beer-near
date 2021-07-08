@@ -31,14 +31,20 @@ export class MapContainer extends React.Component {
     return (
       <Map
         containerStyle={{
-          position: "absolute",
-          width: "30vw",
-          height: "85vh",
+          position: "relative",
+          width: "40vw",
+          height: "75vh",
         }}
         google={this.props.google}
         onReady={this.onReady}
         bounds={this.props.bounds}
-        
+        zoomControl={false}
+        mapTypeControl={false}
+        scaleControl={false}
+        streetViewControl={false}
+        rotateControl={false}
+        fullscreenControl={false}
+        className="rounded"        
       >
         <Marker
           title="You"
@@ -60,5 +66,5 @@ export class MapContainer extends React.Component {
 }
 
 export default GoogleApiWrapper(
-  { apiKey: process.env.REACT_APP_GOOGLE_API }
+  { apiKey: 'AIzaSyCUZLSFgbbVmFwrBjrHX_BPcIsnbDDiwlw' }
 )(MapContainer);

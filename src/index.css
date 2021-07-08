@@ -10,14 +10,12 @@ code {
 }
 
 /* --------------------------Start Screen----------------------------------- */
-#start-div{
+
+#start-div {
   padding-top: 25vh;
 }
 
-#start-button{
-  
-}
-
+#start-button {}
 
 /* --------------------------Beer Components----------------------------------- */
 
@@ -26,7 +24,7 @@ code {
   padding: 60px;
 }
 
-.centered-contact{
+.centered-contact {
   margin: auto;
   padding-top: 40px;
 }
@@ -44,54 +42,46 @@ code {
   gap: 0px 0px;
   grid-auto-flow: row;
   grid-template-areas: "Map Map Map Name Name Name Name" "Map Map Map Address Address Address Address" "Map Map Map Phone Phone Website Website" "Map Map Map Next-Brewery Next-Brewery Next-Brewery Next-Brewery";
-  min-height: 85vh;
+  height: 79vh;
   background-color: rgba(255, 166, 0, 0.863);
   border-radius: 10mm;
 }
 
-@media only screen and (max-width: 900px){
+@media only screen and (max-width: 900px) {
   .brewery-container {
     max-height: 75vh;
-    display: grid; 
-    grid-template-columns: 1fr 1fr 1fr 1fr; 
-    grid-template-rows: 1fr 1fr 0.6fr 1.4fr 1.3fr 0.9fr 0.8fr; 
-    gap: 0px 0px; 
-    grid-template-areas: 
-      "Map Map Map Map"
-      "Map Map Map Map"
-      "Map Map Map Map"
-      "Name Name Name Name"
-      "Address Address Address Address"
-      "Phone Phone Website Website"
-      "Next-Brewery Next-Brewery Next-Brewery Next-Brewery"; 
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 0.6fr 1.4fr 1.3fr 0.9fr 0.8fr;
+    gap: 0px 0px;
+    grid-template-areas: "Map Map Map Map" "Map Map Map Map" "Map Map Map Map" "Name Name Name Name" "Address Address Address Address" "Phone Phone Website Website" "Next-Brewery Next-Brewery Next-Brewery Next-Brewery";
   }
-
-  .centered-text{
+  .centered-text {
     padding: 20px;
   }
-
-  .centered-contact{
+  .centered-contact {
     padding: 15px;
   }
-
 }
 
 .Map {
   grid-area: Map;
+  margin: 5px;
+  padding: 10px;
 }
 
 .Name {
   grid-area: Name;
   background-color: rgba(255, 255, 255, 0.295);
   border-radius: 10mm;
-  margin: 5px;
+  margin: 10px;
 }
 
 .Address {
   grid-area: Address;
   background-color: rgba(255, 255, 255, 0.295);
   border-radius: 10mm;
-  margin: 5px;
+  margin: 10px;
 }
 
 .Phone {
@@ -99,14 +89,14 @@ code {
   background-color: rgba(255, 255, 255, 0.295);
   border-radius: 10mm;
   max-height: 100px;
-  margin: 5px;
+  margin: 10px;
 }
 
 .Website {
   grid-area: Website;
   background-color: rgba(255, 255, 255, 0.295);
   border-radius: 10mm;
-  margin: 5px;
+  margin: 10px;
   max-height: 100px;
   word-break: break-word;
 }
