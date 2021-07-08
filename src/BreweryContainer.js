@@ -8,7 +8,7 @@ import MapContainer from "./MapContainer";
  * @prop brewery - a brewery object
  * @prop breweryCount - number of breweries counted through
  */
-const BreweryContainer = ({ brewery, breweryCount, onNext, clientCoords, handleBounds, bounds }) => {
+const BreweryContainer = ({ brewery, breweryCount, onNext, clientCoords, handleBounds, bounds, handleBtnPhrase, btnPhrase }) => {
 
   /**
  * Returns phone number (from props) with prettier display
@@ -54,7 +54,7 @@ const BreweryContainer = ({ brewery, breweryCount, onNext, clientCoords, handleB
       <div className="Address"><h1 className="centered-text">{brewery.street}, {brewery.city}, {brewery.state}</h1></div>
       <div className="Phone"><h5 className="centered-contact"><a className="phone-number" href={"tel:" + brewery.phone}>{phoneNumber()}</a></h5></div>
       <div className="Website"><h6 className="centered-contact"><a href={brewery.website_url} target="_blank" rel="noreferrer">{shortenedUrl()}</a></h6></div>
-      <div className="Next-Brewery"><NextBrewery onNext={onNext} breweryCount={breweryCount} /></div>
+      <div className="Next-Brewery"><NextBrewery onNext={onNext} breweryCount={breweryCount} handleBtnPhrase={handleBtnPhrase} btnPhrase={btnPhrase}/></div>
     </div>
   );
 

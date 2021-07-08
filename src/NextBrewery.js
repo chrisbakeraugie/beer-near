@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { Button } from "react-bootstrap";
 
-const NextBrewery = ({ onNext, breweryCount }) => {
-
+const NextBrewery = ({ onNext, breweryCount, handleBtnPhrase, btnPhrase }) => {
   /**
    * Returns ranking ("st", "nd", "rd") based on count in brewery
    */
@@ -76,9 +75,11 @@ const NextBrewery = ({ onNext, breweryCount }) => {
     return (rudeResponses[getRandomInt(rudeResponses.length)]);
   };
 
-
+  React.useEffect(() => {
+    handleBtnPhrase(nextText());
+  }, [breweryCount]);
   return (
-    <Button onClick={onNext} size="lg" variant="outline-dark" block>{nextText()}</Button>
+    <Button onClick={onNext} size="lg" variant="outline-dark" block>{btnPhrase}</Button>
   );
 };
 

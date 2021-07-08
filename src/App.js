@@ -30,6 +30,7 @@ function App() {
   const [clientCoords, setClientCoords] = React.useState({});
   const [bounds, setBounds] = React.useState(null);
   const [breweryCount, setBreweryCount] = React.useState(0);
+  const [btnPhrase, setBtnPhrase] = React.useState("Next Brewery");
 
   const loader = new Loader({
     apiKey: process.env.REACT_APP_GOOGLE_API
@@ -87,6 +88,10 @@ function App() {
     }
   };
 
+  const handleBtnPhrase = (phrase) => {
+    setBtnPhrase(phrase);
+  };
+
   /**
    * Use Google API to create new bounds based on coordinates
    */
@@ -133,6 +138,8 @@ function App() {
             clientCoords={clientCoords}
             handleBounds={handleBounds}
             bounds={bounds}
+            handleBtnPhrase={handleBtnPhrase}
+            btnPhrase={btnPhrase}
           />
         </div> :
         <div id="start-div">
