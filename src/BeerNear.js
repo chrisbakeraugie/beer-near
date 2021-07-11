@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import BreweryContainer from "./BreweryContainer";
 import { GoogleApiWrapper } from "google-maps-react";
 import { Loader } from "@googlemaps/js-api-loader";
+import Start from "./Start";
 
 const BREWERY_API_BASE = "https://api.openbrewerydb.org/breweries";
 const BREWERY_API_BY_DISTANCE = "by_dist=";
@@ -24,6 +25,8 @@ const BeerNear = () => {
   const [bounds, setBounds] = React.useState(null);
   const [breweryCount, setBreweryCount] = React.useState(0);
   const [btnPhrase, setBtnPhrase] = React.useState("Next Brewery");
+  const [addressIpt, setAddressIpt] = React.useState("");
+  const [err, setErr] = React.useState(0);
 
   const loader = new Loader({
     apiKey: process.env.REACT_APP_GOOGLE_API
@@ -59,24 +62,25 @@ const BeerNear = () => {
     setBreweryCount(breweryCount + 1);
   };
 
+  const handleAddressChange = (event) =>{
+    setAddressIpt(event.target.value);
+  };
+
   const handleStart = async () => {
-    const DEVELOPMENT_LAT = process.env.REACT_APP_DEVELOPMENT_LAT;
-    const DEVELOPMENT_LNG = process.env.REACT_APP_DEVELOPMENT_LNG;
+    // const DEVELOPMENT_LAT = process.env.REACT_APP_DEVELOPMENT_LAT;
+    // const DEVELOPMENT_LNG = process.env.REACT_APP_DEVELOPMENT_LNG;
     try {
       const coords = await getClientCoords();
       setClientCoords(coords);
       fetch(`${BREWERY_API_BASE}?${BREWERY_API_BY_DISTANCE}${coords.lat},${coords.lng}`)
         .then(res => res.json()).then(result => {
           setBreweries(result);
+          setErr(0);
         });
     } catch (error) {
-      if (process.env.NODE_ENV === "development") {
-        fetch(`${BREWERY_API_BASE}?${BREWERY_API_BY_DISTANCE}${DEVELOPMENT_LAT},-${DEVELOPMENT_LNG}`)
-          .then(res => res.json()).then(result => {
-            setBreweries(result);
-          });
-      } else {
-        alert("Add a second option to get locations");
+      setErr(error.code);
+      if(error.code === 1){
+        alert("Your browser has blocked location services. Please enter your current address to continue.");
       }
     }
   };
@@ -116,7 +120,7 @@ const BeerNear = () => {
 
   return (
     <div>
-      {breweries.length > 0 ?
+      {breweries.length > 0 && err === 0 ?
         <div>
           <BreweryContainer
             brewery={breweries[breweryCount]}
@@ -129,15 +133,20 @@ const BeerNear = () => {
             btnPhrase={btnPhrase}
           />
         </div> :
-        <div id="start-div">
-          <h1>Beer Near</h1>
-          <h3>Find the closest brewery to you</h3>
-          <StartButton handleStart={handleStart}></StartButton>
-        </div>
+        <Start 
+        handleStart={handleStart}
+        handleAddressChange={handleAddressChange}
+         />
+
+        // <div id="start-div">
+        //   <h1>Beer Near</h1>
+        //   <h3>Find the closest brewery to you</h3>
+        //   <StartButton handleStart={handleStart}></StartButton>
+        // </div>
       }
     </div>
   );
-}
+};
 
 
 export default GoogleApiWrapper(
