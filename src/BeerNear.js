@@ -57,7 +57,12 @@ const BeerNear = () => {
   };
 
   const onNext = () => {
-    setBreweryCount(breweryCount + 1);
+    if (breweries.length > breweryCount + 1) {
+      setBreweryCount(breweryCount + 1);
+    } else {
+      // TODO: Too many breweries error
+      console.log("Too high");
+    }
   };
 
   const handleStart = async () => {
@@ -129,6 +134,9 @@ const BeerNear = () => {
 
   return (
     <div>
+      {breweries.length}
+      <br></br>
+      {breweryCount}
       {breweries.length > 0 && err === 0 ?
         <div>
           <BreweryContainer

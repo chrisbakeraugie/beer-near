@@ -54,6 +54,27 @@ const BreweryContainer = ({
     return shortenedUrl;
   };
 
+  const getBrewery = () => {
+    if (breweryCount >= 20) {
+      return {
+        name: "There has been an error",
+        street: null,
+        city: null,
+        state: null,
+        phone: null,
+        website_url: null
+      };
+    }
+    return {
+      name: brewery.name,
+      street: brewery.street,
+      city: brewery.city,
+      state: brewery.state,
+      phone: brewery.phone,
+      website_url: brewery.website_url
+    };
+  }
+
   return (
     <div className="brewery-container">
       <div className="Map"><MapContainer
@@ -62,10 +83,10 @@ const BreweryContainer = ({
         handleBounds={handleBounds}
         bounds={bounds}
       /></div>
-      <div className="Name"><h3 className="centered-text">{brewery.name}</h3></div>
-      <div className="Address"><h3 className="centered-text">{brewery.street}, {brewery.city}, {brewery.state}</h3></div>
-      <div className="Phone"><h5 className="centered-contact"><a className="phone-number" href={"tel:" + brewery.phone}>{phoneNumber()}</a></h5></div>
-      <div className="Website"><h6 className="centered-contact"><a href={brewery.website_url} target="_blank" rel="noreferrer">{shortenedUrl()}</a></h6></div>
+      <div className="Name"><h3 className="centered-text">{getBrewery().name}</h3></div>
+      <div className="Address"><h3 className="centered-text">{getBrewery().street}, {getBrewery().city}, {getBrewery().state}</h3></div>
+      <div className="Phone"><h5 className="centered-contact"><a className="phone-number" href={"tel:" + getBrewery().phone}>{phoneNumber()}</a></h5></div>
+      <div className="Website"><h6 className="centered-contact"><a href={getBrewery().website_url} target="_blank" rel="noreferrer">{shortenedUrl()}</a></h6></div>
       <div className="Next-Brewery"><NextBrewery onNext={onNext} breweryCount={breweryCount} handleBtnPhrase={handleBtnPhrase} btnPhrase={btnPhrase} /></div>
     </div>
   );
