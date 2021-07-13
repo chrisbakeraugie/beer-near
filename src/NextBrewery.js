@@ -57,7 +57,7 @@ const NextBrewery = ({ onNext, breweryCount, handleBtnPhrase, btnPhrase }) => {
     "Am I a joke to you?",
     "Are you looking for a beer, or just bored",
     "BRUH.",
-    `You know this is the ${breweryCount}${distRank()} brewery you've seen, right?`
+    `You know this is the ${breweryCount + 1}${distRank()} brewery you've seen, right?`
   ];
 
   const getRandomInt = (max) => {
