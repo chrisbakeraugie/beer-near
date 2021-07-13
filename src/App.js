@@ -28,6 +28,7 @@ function App() {
           <Route path="/about">
             <h2>About Beer-Near</h2>
             <h5>The general purpose of beer near is that Alex is garbage at FIFA an he knows it.</h5>
+            <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
           </Route>
           <Route path="/">
             <BeerNear />

@@ -79,7 +79,7 @@ const NextBrewery = ({ onNext, breweryCount, handleBtnPhrase, btnPhrase }) => {
     handleBtnPhrase(nextText());
   }, [breweryCount]);
   return (
-    <Button onClick={onNext} size="lg" variant="outline-dark" block>{btnPhrase}</Button>
+    <Button onClick={onNext} size="lg" variant="outline-dark" block style={{"whiteSpace": "unset"}}>{btnPhrase}</Button>
   );
 };
 
