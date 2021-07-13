@@ -1,5 +1,4 @@
 import React from "react";
-import StartButton from "./StartButton";
 import "bootstrap/dist/css/bootstrap.min.css";
 import BreweryContainer from "./BreweryContainer";
 import { GoogleApiWrapper } from "google-maps-react";
@@ -25,7 +24,6 @@ const BeerNear = () => {
   const [bounds, setBounds] = React.useState(null);
   const [breweryCount, setBreweryCount] = React.useState(0);
   const [btnPhrase, setBtnPhrase] = React.useState("Next Brewery");
-  const [addressIpt, setAddressIpt] = React.useState("");
   const [err, setErr] = React.useState(0);
 
   const loader = new Loader({
@@ -62,31 +60,42 @@ const BeerNear = () => {
     setBreweryCount(breweryCount + 1);
   };
 
-  const handleAddressChange = (event) =>{
-    setAddressIpt(event.target.value);
-  };
-
   const handleStart = async () => {
-    // const DEVELOPMENT_LAT = process.env.REACT_APP_DEVELOPMENT_LAT;
-    // const DEVELOPMENT_LNG = process.env.REACT_APP_DEVELOPMENT_LNG;
-    try {
-      const coords = await getClientCoords();
-      setClientCoords(coords);
-      fetch(`${BREWERY_API_BASE}?${BREWERY_API_BY_DISTANCE}${coords.lat},${coords.lng}`)
+    if (clientCoords.lat !== undefined || clientCoords.lng !== undefined) {
+      fetch(`${BREWERY_API_BASE}?${BREWERY_API_BY_DISTANCE}${clientCoords.lat},${clientCoords.lng}`)
         .then(res => res.json()).then(result => {
           setBreweries(result);
           setErr(0);
         });
-    } catch (error) {
-      setErr(error.code);
-      if(error.code === 1){
-        alert("Your browser has blocked location services. Please enter your current address to continue.");
+    } else {
+      try {
+        const coords = await getClientCoords();
+        setClientCoords(coords);
+        fetch(`${BREWERY_API_BASE}?${BREWERY_API_BY_DISTANCE}${coords.lat},${coords.lng}`)
+          .then(res => res.json()).then(result => {
+            setBreweries(result);
+            setErr(0);
+          });
+      } catch (error) {
+        setErr(error.code);
+        if (error.code === 1) {
+          alert("Your browser has blocked location services. Please enter your current address to continue.");
+          setErr(0);
+        }
       }
     }
   };
 
   const handleBtnPhrase = (phrase) => {
     setBtnPhrase(phrase);
+  };
+
+
+  const handleAddressSelected = (place) => {
+    setClientCoords({
+      lat: Math.trunc(place.geometry.location.lat() * 10000) / 10000,
+      lng: Math.trunc(place.geometry.location.lng() * 10000) / 10000
+    });
   };
 
   /**
@@ -133,16 +142,10 @@ const BeerNear = () => {
             btnPhrase={btnPhrase}
           />
         </div> :
-        <Start 
-        handleStart={handleStart}
-        handleAddressChange={handleAddressChange}
-         />
-
-        // <div id="start-div">
-        //   <h1>Beer Near</h1>
-        //   <h3>Find the closest brewery to you</h3>
-        //   <StartButton handleStart={handleStart}></StartButton>
-        // </div>
+        <Start
+          handleStart={handleStart}
+          handleAddressSelected={handleAddressSelected}
+        />
       }
     </div>
   );

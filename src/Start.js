@@ -1,13 +1,21 @@
 import React from "react";
 import StartButton from "./StartButton";
+import AutoComplete from "react-google-autocomplete";
 
-const Start = ({ handleStart, handleAddressChange }) => {
+const Start = ({ handleStart, handleAddressSelected }) => {
   return (
     <div className="start-div">
       <h1>Beer Near</h1>
       <h3>Find the closest brewery to you</h3>
       <StartButton handleStart={handleStart} />
-      <input type="text" onChange={handleAddressChange} placeholder="Your current address"/>
+      <AutoComplete
+        apiKey={process.env.REACT_APP_GOOGLE_API}
+        options={{
+          types: ["address"],
+          fields: ["geometry"]
+        }}
+        onPlaceSelected={handleAddressSelected}
+      />
     </div>
   );
 };
