@@ -134,6 +134,9 @@ const BeerNear = () => {
 
   return (
     <div>
+      {breweries.length}
+      <br></br>
+      {breweryCount}
       {breweries.length > 0 && err === 0 ?
         <div>
           <BreweryContainer
