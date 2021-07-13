@@ -23,6 +23,9 @@ const BreweryContainer = ({
  * Returns phone number (from props) with prettier display
  */
   const phoneNumber = () => {
+    if (brewery.phone === null || brewery.phone === undefined) {
+      return ("No phone listed");
+    }
     const phoneArray = brewery.phone.toString().split("");
     if (brewery.phone.toString().split("").length === 10) {
       return (
@@ -44,7 +47,7 @@ const BreweryContainer = ({
    */
   const shortenedUrl = () => {
     if (brewery.website_url === undefined || brewery.website_url === null) {
-      return;
+      return ("No website listed");
     }
     let shortenedUrl = brewery.website_url;
     shortenedUrl = shortenedUrl.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "");
