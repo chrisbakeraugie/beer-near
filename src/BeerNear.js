@@ -155,6 +155,7 @@ const BeerNear = () => {
             bounds={bounds}
             handleBtnPhrase={handleBtnPhrase}
             btnPhrase={btnPhrase}
+            makeBounds={makeBounds}
           />
         </div> :
         <Start

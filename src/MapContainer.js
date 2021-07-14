@@ -41,6 +41,10 @@ export class MapContainer extends React.Component {
     }
   }
 
+  onReady =() => {
+    this.props.makeBounds()
+  }
+
   render() {
     return (
       <Map

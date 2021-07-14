@@ -16,7 +16,8 @@ const BreweryContainer = ({
   handleBounds,
   bounds,
   handleBtnPhrase,
-  btnPhrase
+  btnPhrase,
+  makeBounds
 }) => {
 
   /**
@@ -82,6 +83,7 @@ const BreweryContainer = ({
         brewery={brewery}
         handleBounds={handleBounds}
         bounds={bounds}
+        makeBounds={makeBounds}
       /></div>
       <div className="Name"><h3 className="centered-text">{getBrewery().name}</h3></div>
       <div className="Address"><h3 className="centered-text">{getBrewery().street}, {getBrewery().city}, {getBrewery().state}</h3></div>
