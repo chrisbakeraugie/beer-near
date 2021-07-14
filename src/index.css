@@ -23,10 +23,23 @@ code {
   padding-top: 20vh;
 }
 
-.start-button-btn:hover{
-  background-color: black;
-
+.start-button-div {
+  margin: auto;
+  width: fit-content;
+  background: "none";
+  border-radius: 5mm;
+  transition: .4s;
 }
+
+.start-button-div:hover {
+  transform: translateY(-5px);
+  background-color: rgba(128, 128, 128, 0.178);
+}
+
+.start-button-div:active{
+  transform: translateY(20px);
+}
+
 /* --------------------------Beer Components----------------------------------- */
 
 .centered-text {
@@ -85,6 +98,10 @@ code {
   }
   #autocomplete-input {
     width: 80%;
+  }
+
+  .start-button-div {
+    border-style: solid;
   }
 }
 
