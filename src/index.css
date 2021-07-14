@@ -16,11 +16,12 @@ code {
 }
 
 .description {
-  padding: 10px
+  padding: 10px;
+  font-size: larger;
 }
 
 .start-div {
-  padding-top: 20vh;
+  padding-top: 10vh;
 }
 
 .start-button-div {

@@ -8,7 +8,7 @@ const Start = ({ handleStart, handleAddressSelected }) => {
       <h1>Beer Near</h1>
       <h3>Find the closest brewery to you</h3>
       <StartButton handleStart={handleStart} />
-      <h6 className="description">Click the button above to start!<br/>
+      <h6 className="description">Tap the beer icon to find your location and get started!<br/>
       To use a different location, search by address first</h6>
       <AutoComplete
       id="autocomplete-input"
@@ -18,7 +18,7 @@ const Start = ({ handleStart, handleAddressSelected }) => {
           fields: ["geometry"]
         }}
         onPlaceSelected={handleAddressSelected}
-        placeholder="Enter your current address"
+        placeholder="Search your address"
       />
 
     </div>
