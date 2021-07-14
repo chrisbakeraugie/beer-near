@@ -36,8 +36,8 @@ code {
   background-color: rgba(128, 128, 128, 0.178);
 }
 
-.start-button-div:active{
-  transform: translateY(20px);
+.start-button-div:active {
+  transform: translateY(15px);
 }
 
 /* --------------------------Beer Components----------------------------------- */
@@ -99,9 +99,16 @@ code {
   #autocomplete-input {
     width: 80%;
   }
-
   .start-button-div {
     border-style: solid;
+    transition: unset;
+  }
+  .start-button-div:hover {
+    transform: unset;
+    background-color: unset;
+  }
+  .start-button-div:active {
+    transform: unset;
   }
 }
 
