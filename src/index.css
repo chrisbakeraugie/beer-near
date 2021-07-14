@@ -11,18 +11,22 @@ code {
 
 /* --------------------------Start Screen----------------------------------- */
 
-.start-div {
-  padding-top: 20vh;
-}
-
 #autocomplete-input {
   width: 40%;
 }
 
-.description{
+.description {
   padding: 10px
 }
 
+.start-div {
+  padding-top: 20vh;
+}
+
+.start-button-btn:hover{
+  background-color: black;
+
+}
 /* --------------------------Beer Components----------------------------------- */
 
 .centered-text {
@@ -79,7 +83,7 @@ code {
     min-height: 20vh;
     padding-top: 25px;
   }
-  #autocomplete-input{
+  #autocomplete-input {
     width: 80%;
   }
 }

@@ -28,7 +28,7 @@ export class MapContainer extends React.Component {
   // }
 
   psuedoResponsive = () => {
-    if (window.innerWidth < 1000) {
+    if (window.innerWidth < 900) {
       return {
         width: "80vw",
         height: "70vh"
