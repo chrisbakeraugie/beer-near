@@ -4,6 +4,7 @@ import BreweryContainer from "./BreweryContainer";
 import { GoogleApiWrapper } from "google-maps-react";
 import { Loader } from "@googlemaps/js-api-loader";
 import Start from "./Start";
+import Loading from "./Loading";
 
 const BREWERY_API_BASE = "https://api.openbrewerydb.org/breweries";
 const BREWERY_API_BY_DISTANCE = "by_dist=";
@@ -25,6 +26,7 @@ const BeerNear = () => {
   const [breweryCount, setBreweryCount] = React.useState(0);
   const [btnPhrase, setBtnPhrase] = React.useState("Next Brewery");
   const [err, setErr] = React.useState(0);
+  const [isLoading, setIsLoading] = React.useState(false);
 
   const loader = new Loader({
     apiKey: process.env.REACT_APP_GOOGLE_API
@@ -35,6 +37,7 @@ const BeerNear = () => {
    * @returns {object} {lat: number, lng: number}
    */
   const getClientCoords = async () => {
+    setIsLoading(true);
     return await new Promise((resolve, reject) => {
       navigator.geolocation.getCurrentPosition((position) => {
         resolve({
@@ -66,11 +69,13 @@ const BeerNear = () => {
   };
 
   const handleStart = async () => {
+    setIsLoading(true);
     if (clientCoords.lat !== undefined || clientCoords.lng !== undefined) {
       fetch(`${BREWERY_API_BASE}?${BREWERY_API_BY_DISTANCE}${clientCoords.lat},${clientCoords.lng}`)
         .then(res => res.json()).then(result => {
           setBreweries(result);
           setErr(0);
+          setIsLoading(false);
         });
     } else {
       try {
@@ -80,12 +85,14 @@ const BeerNear = () => {
           .then(res => res.json()).then(result => {
             setBreweries(result);
             setErr(0);
+            setIsLoading(false);
           });
       } catch (error) {
         setErr(error.code);
         if (error.code === 1) {
           alert("Your browser has blocked location services. Please enter your current address to continue.");
           setErr(0);
+          setIsLoading(false);
         }
       }
     }
@@ -134,7 +141,10 @@ const BeerNear = () => {
 
   return (
     <div>
-      {breweries.length > 0 && err === 0 ?
+      {isLoading === true ? 
+        <Loading />
+        :
+        breweries.length > 0 && err === 0 ?
         <div>
           <BreweryContainer
             brewery={breweries[breweryCount]}

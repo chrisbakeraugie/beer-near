@@ -40,6 +40,106 @@ code {
   transform: translateY(15px);
 }
 
+/* --------------------------Loading Components----------------------------------- */
+
+.loading-bubble-1 {
+  position: absolute;
+  top: 70vh;
+  left: 44vw;
+  background-color: rgb(248, 237, 214);
+  border-radius: 10px;
+  width: 7px;
+  height: 7px;
+  animation: Rising 4s infinite;
+}
+
+.loading-bubble-2 {
+  position: absolute;
+  top: 70vh;
+  left: 44vw;
+  background-color: rgb(248, 237, 214);
+  border-radius: 10px;
+  width: 7px;
+  height: 7px;
+  animation: Rising 4s infinite 1s;
+}
+
+.loading-bubble-3 {
+  position: absolute;
+  top: 70vh;
+  left: 44vw;
+  background-color: rgb(248, 237, 214);
+  border-radius: 10px;
+  width: 7px;
+  height: 7px;
+  animation: Rising 4s infinite 2s;
+}
+
+.loading-bubble-4 {
+  position: absolute;
+  top: 70vh;
+  left: 53vw;
+  background-color: rgb(248, 237, 214);
+  border-radius: 10px;
+  width: 7px;
+  height: 7px;
+  animation: Rising 8s forwards;
+}
+
+.loading-bubble-5 {
+  position: absolute;
+  top: 70%;
+  left: 55vw;
+  background-color: rgb(248, 237, 214);
+  border-radius: 10px;
+  width: 7px;
+  height: 7px;
+  animation: Rising 3s forwards;
+}
+
+.loading-bubble-6 {
+  position: absolute;
+  top: 70vh;
+  left: 51vw;
+  background-color: rgb(248, 237, 214);
+  border-radius: 10px;
+  width: 7px;
+  height: 7px;
+  animation: Rising 6s forwards infinite 1s;
+}
+
+@keyframes Rising {
+  100% {
+    top: 31vh
+  }
+}
+
+.loading-logo-text {
+  padding-top: 20vh;
+}
+
+.loading-logo-top {
+  position: absolute;
+  top: 30vh;
+  left: 40.7vw;
+  border-top: 5.5vh solid rgb(248, 237, 214);
+  border-left: .3vw solid transparent;
+  border-right: .3vw solid transparent;
+  height: 0;
+  width: 18.6vw;
+}
+
+.loading-logo-bottom {
+  position: absolute;
+  top: 35vh;
+  left: 41vw;
+  border-top: 45vh solid rgba(255, 166, 0, 0.863);
+  border-left: 2.3vw solid transparent;
+  border-right: 2.3vw solid transparent;
+  height: 0;
+  width: 18vw;
+}
+
 /* --------------------------Beer Components----------------------------------- */
 
 .centered-text {
@@ -72,7 +172,115 @@ code {
   border-bottom-left-radius: 0mm;
 }
 
+@media only screen and (max-width: 620px) {
+  .loading-bubble-1 {
+    position: absolute;
+    top: 65%;
+    left: 30%;
+    background-color: rgb(248, 237, 214);
+    border-radius: 10px;
+    width: 7px;
+    height: 7px;
+    animation: Rising 4s infinite;
+  }
+  
+  .loading-bubble-2 {
+    position: absolute;
+    top: 65%;
+    left: 30%;
+    background-color: rgb(248, 237, 214);
+    border-radius: 10px;
+    width: 7px;
+    height: 7px;
+    animation: Rising 4s infinite 1s;
+  }
+  
+  .loading-bubble-3 {
+    position: absolute;
+    top: 65%;
+    left: 30%;
+    background-color: rgb(248, 237, 214);
+    border-radius: 10px;
+    width: 7px;
+    height: 7px;
+    animation: Rising 4s infinite 2s;
+  }
+  
+  .loading-bubble-4 {
+    position: absolute;
+    top: 69%;
+    left: 45%;
+    background-color: rgb(248, 237, 214);
+    border-radius: 10px;
+    width: 7px;
+    height: 7px;
+    animation: Rising 8s forwards;
+  }
+  
+  .loading-bubble-5 {
+    position: absolute;
+    top: 70%;
+    left: 67%;
+    background-color: rgb(248, 237, 214);
+    border-radius: 10px;
+    width: 7px;
+    height: 7px;
+    animation: Rising 3s forwards;
+  }
+  
+  .loading-bubble-6 {
+    position: absolute;
+    top: 62%;
+    left: 60%;
+    background-color: rgb(248, 237, 214);
+    border-radius: 10px;
+    width: 7px;
+    height: 7px;
+    animation: Rising 6s forwards;
+  }
+  
+
+  
+  .loading-logo-top {
+    position: absolute;
+    top: 30vh;
+    left: 24vw;
+    border-top: 5.5vh solid rgb(248, 237, 214);
+    border-left: 1vw solid transparent;
+    border-right: 1vw solid transparent;
+    height: 0;
+    width: 50.7vw;
+  }
+  
+  .loading-logo-bottom {
+    position: absolute;
+    top: 35vh;
+    left: 24.8vw;
+    border-top: 43vh solid rgba(255, 166, 0, 0.863);
+    border-left: 6vw solid transparent;
+    border-right: 6vw solid transparent;
+    height: 0;
+    width: 49vw;
+  }
+}
+
 @media only screen and (max-width: 900px) {
+  /* --------------------------Start Screen----------------------------------- */
+  #autocomplete-input {
+    width: 80%;
+  }
+  .start-button-div {
+    border-style: solid;
+    transition: unset;
+  }
+  .start-button-div:hover {
+    transform: unset;
+    background-color: unset;
+  }
+  .start-button-div:active {
+    transform: unset;
+  }
+  /* --------------------------Beer Components----------------------------------- */
   .brewery-container {
     height: unset;
     background-color: unset;
@@ -95,20 +303,6 @@ code {
   .Map {
     min-height: 20vh;
     padding-top: 25px;
-  }
-  #autocomplete-input {
-    width: 80%;
-  }
-  .start-button-div {
-    border-style: solid;
-    transition: unset;
-  }
-  .start-button-div:hover {
-    transform: unset;
-    background-color: unset;
-  }
-  .start-button-div:active {
-    transform: unset;
   }
 }
 
