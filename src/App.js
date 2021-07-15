@@ -10,6 +10,7 @@ import {
 import "bootstrap/dist/css/bootstrap.min.css";
 import BeerNear from "./BeerNear";
 import "./bootstrap.css";
+import About from "./About";
 
 
 
@@ -26,9 +27,7 @@ function App() {
 
         <Switch>
           <Route path="/about">
-            <h2>About Beer-Near</h2>
-            <h5>The general purpose of beer near is that Alex is garbage at FIFA an he knows it.</h5>
-            <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+            <About />
           </Route>
           <Route path="/">
             <BeerNear />
