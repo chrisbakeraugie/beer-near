@@ -41,7 +41,7 @@ export class MapContainer extends React.Component {
     }
   }
 
-  onReady =() => {
+  onReady = () => {
     this.props.makeBounds()
   }
 
@@ -70,12 +70,20 @@ export class MapContainer extends React.Component {
             lat: this.props.clientCoords.lat,
             lng: this.props.clientCoords.lng
           }}
+          icon={{
+            url:"https://cdn.mapmarker.io/api/v1/pin?text=You&size=80&background=%23373737&color=%23FFFFF&voffset=2&hoffset=1",
+            scaledSize: new this.props.google.maps.Size(50, 50)
+          }}
         />
         <Marker
           title={this.props.brewery.name}
           position={{
             lat: this.props.brewery.latitude,
             lng: this.props.brewery.longitude
+          }}
+          icon={{
+            url: "https://cdn.mapmarker.io/api/v1/font-awesome/v4/pin?icon=fa-beer&size=80&background=%23000000&color=%23FB9E00&hoffset=0",
+            scaledSize: new this.props.google.maps.Size(50, 50)
           }}
         />
       </Map>
