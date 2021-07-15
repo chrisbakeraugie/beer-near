@@ -27,6 +27,7 @@ export class MapContainer extends React.Component {
   //   this.makeBounds();
   // }
 
+  /* eslint-disable-next-line */
   psuedoResponsive = () => {
     if (window.innerWidth < 900) {
       return {
@@ -71,7 +72,7 @@ export class MapContainer extends React.Component {
             lng: this.props.clientCoords.lng
           }}
           icon={{
-            url:"https://cdn.mapmarker.io/api/v1/pin?text=You&size=80&background=%23373737&color=%23FFFFF&voffset=2&hoffset=1",
+            url: "https://cdn.mapmarker.io/api/v1/pin?text=You&size=80&background=%23373737&color=%23FFFFF&voffset=2&hoffset=1",
             scaledSize: new this.props.google.maps.Size(50, 50)
           }}
         />

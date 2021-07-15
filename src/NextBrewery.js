@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import { Button } from "react-bootstrap";
 
@@ -79,7 +80,7 @@ const NextBrewery = ({ onNext, breweryCount, handleBtnPhrase, btnPhrase }) => {
     handleBtnPhrase(nextText());
   }, [breweryCount]);
   return (
-    <Button onClick={onNext} size="lg" variant="outline-dark" block style={{"whiteSpace": "unset"}}>{btnPhrase}</Button>
+    <Button onClick={onNext} size="lg" variant="outline-dark" block style={{ "whiteSpace": "unset" }}>{btnPhrase}</Button>
   );
 };
 

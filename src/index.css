@@ -181,7 +181,7 @@ code {
   line-height: 100px;
 }
 
-.centered-website{
+.centered-website {
   line-height: 100px;
   font-size: x-large;
 }
@@ -329,9 +329,8 @@ code {
   .centered-phone {
     line-height: 100px;
     font-size: large;
-
   }
-  .centered-website{
+  .centered-website {
     height: inherit;
     line-height: 100px;
     font-size: large;

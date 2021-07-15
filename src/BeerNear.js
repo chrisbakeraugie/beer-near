@@ -13,14 +13,7 @@ const BeerNear = () => {
   /**
    * State management for the list of breweries
    */
-  const [breweries, setBreweries] = React.useState([ // TODO: REMOVE INITIAL CONDITIONS BEFORE DEPLOYMENT
-    // { "id": 14927, "obdb_id": "the-bronx-brewery-bronx", "name": "The Bronx Brewery", "brewery_type": "micro", "street": "856 E 136th St", "address_2": null, "address_3": null, "city": "Bronx", "state": "New York", "county_province": null, "postal_code": "10454-3509", "country": "United States", "longitude": "-73.91064054", "latitude": "40.801861", "phone": "7184021000", "website_url": "http://www.thebronxbrewery.com", "updated_at": "2018-08-24T00:00:00.000Z", "created_at": "2018-07-24T00:00:00.000Z" },
-    // { "id": 12184, "obdb_id": "lic-beer-project-long-island-city", "name": "LIC Beer Project", "brewery_type": "micro", "street": "3928 23rd St", "address_2": null, "address_3": null, "city": "Long Island City", "state": "New York", "county_province": null, "postal_code": "11101-4817", "country": "United States", "longitude": "-73.942849", "latitude": "40.75063", "phone": "9178326840", "website_url": "http://licbeerproject.com", "updated_at": "2018-08-24T00:00:00.000Z", "created_at": "2018-07-24T00:00:00.000Z" },
-    // {"id":11335,"obdb_id":"harlem-brewing-co-new-york","name":"Harlem Brewing Co","brewery_type":"contract","street":"2 W 123rd St","address_2":null,"address_3":null,"city":"New York","state":"New York","county_province":null,"postal_code":"10027-5623","country":"United States","longitude":"-73.94532799","latitude":"40.8058068","phone":"8885596735","website_url":"http://www.harlembrewingcompany.com","updated_at":"2018-08-24T00:00:00.000Z","created_at":"2018-07-24T00:00:00.000Z"},
-    // {"id":10641,"obdb_id":"finback-brewery-queens","name":"Finback Brewery","brewery_type":"micro","street":"78-01 77th Ave","address_2":null,"address_3":null,"city":"Queens","state":"New York","county_province":null,"postal_code":"11385-7518","country":"United States","longitude":"-73.8732597","latitude":"40.7067227","phone":"7186288600","website_url":"http://www.finbackbrewery.com","updated_at":"2018-08-24T00:00:00.000Z","created_at":"2018-07-24T00:00:00.000Z"},
-    // {"id":10619,"obdb_id":"fifth-hammer-brewing-company-long-island-city","name":"Fifth Hammer Brewing Company","brewery_type":"micro","street":"10-28 46th Ave","address_2":null,"address_3":null,"city":"Long Island City","state":"New York","county_province":null,"postal_code":"11101-5217","country":"United States","longitude":"-73.9515404","latitude":"40.7464921","phone":"7186632084","website_url":"http://www.fifthhammerbrewing.com","updated_at":"2018-08-24T00:00:00.000Z","created_at":"2018-07-24T00:00:00.000Z"},
-    // {"id":15228,"obdb_id":"transmitter-brewing-long-island-city","name":"Transmitter Brewing","brewery_type":"micro","street":"5302 11th St","address_2":null,"address_3":null,"city":"Long Island City","state":"New York","county_province":null,"postal_code":"11101-5917","country":"United States","longitude":"-73.9511062","latitude":"40.7431826","phone":"6463788529","website_url":"http://www.transmitterbrew.com","updated_at":"2018-08-24T00:00:00.000Z","created_at":"2018-07-24T00:00:00.000Z"}
-  ]);
+  const [breweries, setBreweries] = React.useState([]);
   const [clientCoords, setClientCoords] = React.useState({});
   const [bounds, setBounds] = React.useState(null);
   const [breweryCount, setBreweryCount] = React.useState(0);
@@ -29,6 +22,7 @@ const BeerNear = () => {
   const [isLoading, setIsLoading] = React.useState(false);
 
   const loader = new Loader({
+    // eslint-disable-next-line no-undef
     apiKey: process.env.REACT_APP_GOOGLE_API
   });
 
@@ -46,10 +40,6 @@ const BeerNear = () => {
         });
       },
         (err) => {
-          // TODO Error 1 - denied location services
-          // TODO Error 2 - Network connectivity issues
-          // TODO Error 3 - Timeout expired
-          // TODO Error * - Random other error
           reject(err);
         }, { enableHighAccuracy: true, timeout: 30000 });
     });
@@ -59,15 +49,22 @@ const BeerNear = () => {
     setBounds(newBounds);
   };
 
+  /**
+   * Increments (+1) breweryCount and resets count before it becomes longer than provided brewery list
+   */
   const onNext = () => {
     if (breweries.length > breweryCount + 1) {
       setBreweryCount(breweryCount + 1);
     } else {
-      // TODO: Too many breweries error
-      console.log("Too high");
+      alert("You have been too picky and therefore have failed. Please start over.");
+      setBreweryCount(0);
     }
   };
 
+  /**
+   * Uses the provided client coords to fetch nearby breweries and alert user to errors.
+   * Will fetch client coordinates if they haven't already specified an address
+   */
   const handleStart = async () => {
     setIsLoading(true);
     if (clientCoords.lat !== undefined || clientCoords.lng !== undefined) {
@@ -93,6 +90,15 @@ const BeerNear = () => {
           alert("Your browser has blocked location services. Please enter your current address to continue.");
           setErr(0);
           setIsLoading(false);
+        } else if (error.code === 2) {
+          alert("Network connectivity issues. Please refresh your connection and try again later");
+          setErr(0);
+        } else if (error.code === 3) {
+          alert("Took too long to get your location. Try typing in an address or waiting until better connected.");
+          setErr(0);
+        } else {
+          alert("Something went wrong and we're not sure what it is. Please try again later.");
+          setErr(0);
         }
       }
     }
@@ -103,6 +109,10 @@ const BeerNear = () => {
   };
 
 
+  /**
+   * Sets clientCoords after place returned form google address search
+   * @param {object} place (google geometry result from address search)
+   */
   const handleAddressSelected = (place) => {
     setClientCoords({
       lat: Math.trunc(place.geometry.location.lat() * 10000) / 10000,
@@ -141,27 +151,27 @@ const BeerNear = () => {
 
   return (
     <div>
-      {isLoading === true ? 
+      {isLoading === true ?
         <Loading />
         :
         breweries.length > 0 && err === 0 ?
-        <div>
-          <BreweryContainer
-            brewery={breweries[breweryCount]}
-            breweryCount={breweryCount}
-            onNext={onNext}
-            clientCoords={clientCoords}
-            handleBounds={handleBounds}
-            bounds={bounds}
-            handleBtnPhrase={handleBtnPhrase}
-            btnPhrase={btnPhrase}
-            makeBounds={makeBounds}
+          <div>
+            <BreweryContainer
+              brewery={breweries[breweryCount]}
+              breweryCount={breweryCount}
+              onNext={onNext}
+              clientCoords={clientCoords}
+              handleBounds={handleBounds}
+              bounds={bounds}
+              handleBtnPhrase={handleBtnPhrase}
+              btnPhrase={btnPhrase}
+              makeBounds={makeBounds}
+            />
+          </div> :
+          <Start
+            handleStart={handleStart}
+            handleAddressSelected={handleAddressSelected}
           />
-        </div> :
-        <Start
-          handleStart={handleStart}
-          handleAddressSelected={handleAddressSelected}
-        />
       }
     </div>
   );
@@ -169,5 +179,6 @@ const BeerNear = () => {
 
 
 export default GoogleApiWrapper(
+  // eslint-disable-next-line no-undef
   { apiKey: process.env.REACT_APP_GOOGLE_API }
 )(BeerNear);

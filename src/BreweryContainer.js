@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import NextBrewery from "./NextBrewery";
 import MapContainer from "./MapContainer";
@@ -46,14 +47,14 @@ const BreweryContainer = ({
   /**
    * Removes http, https, and www parts of the urls
    */
-  const shortenedUrl = () => {
-    if (brewery.website_url === undefined || brewery.website_url === null) {
-      return ("No website listed");
-    }
-    let shortenedUrl = brewery.website_url;
-    shortenedUrl = shortenedUrl.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "");
-    return shortenedUrl;
-  };
+  // const shortenedUrl = () => {
+  //   if (brewery.website_url === undefined || brewery.website_url === null) {
+  //     return ("No website listed");
+  //   }
+  //   let shortenedUrl = brewery.website_url;
+  //   shortenedUrl = shortenedUrl.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "");
+  //   return shortenedUrl;
+  // };
 
   const getBrewery = () => {
     if (breweryCount >= 20) {
@@ -74,7 +75,7 @@ const BreweryContainer = ({
       phone: brewery.phone,
       website_url: brewery.website_url
     };
-  }
+  };
 
   return (
     <div className="brewery-container">
