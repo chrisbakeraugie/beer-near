@@ -177,9 +177,13 @@ code {
   padding: 60px;
 }
 
-.centered-contact {
-  margin: auto;
-  padding-top: 40px;
+.centered-phone {
+  line-height: 100px;
+}
+
+.centered-website{
+  line-height: 100px;
+  font-size: x-large;
 }
 
 .phone-number {
@@ -200,6 +204,10 @@ code {
   border-radius: 10mm;
   border-top-left-radius: 0mm;
   border-bottom-left-radius: 0mm;
+}
+
+#website-link {
+  color: black;
 }
 
 @media only screen and (max-width: 620px) {
@@ -318,8 +326,15 @@ code {
   .centered-text {
     padding: 20px;
   }
-  .centered-contact {
-    padding: 15px;
+  .centered-phone {
+    line-height: 100px;
+    font-size: large;
+
+  }
+  .centered-website{
+    height: inherit;
+    line-height: 100px;
+    font-size: large;
   }
   .Map {
     min-height: 20vh;

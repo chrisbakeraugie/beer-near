@@ -87,8 +87,8 @@ const BreweryContainer = ({
       /></div>
       <div className="Name"><h3 className="centered-text">{getBrewery().name}</h3></div>
       <div className="Address"><h3 className="centered-text">{getBrewery().street}, {getBrewery().city}, {getBrewery().state}</h3></div>
-      <div className="Phone"><h5 className="centered-contact"><a className="phone-number" href={"tel:" + getBrewery().phone}>{phoneNumber()}</a></h5></div>
-      <div className="Website"><h6 className="centered-contact"><a href={getBrewery().website_url} target="_blank" rel="noreferrer">{shortenedUrl()}</a></h6></div>
+      <div className="Phone"><h5 className="centered-phone"><a className="phone-number" href={"tel:" + getBrewery().phone}>{phoneNumber()}</a></h5></div>
+      <div className="Website"><h6 className="centered-website"><a href={getBrewery().website_url} target="_blank" rel="noreferrer" id="website-link">Website</a></h6></div>
       <div className="Next-Brewery"><NextBrewery onNext={onNext} breweryCount={breweryCount} handleBtnPhrase={handleBtnPhrase} btnPhrase={btnPhrase} /></div>
     </div>
   );
