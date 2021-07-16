@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import StartButton from "./StartButton";
 import AutoComplete from "react-google-autocomplete";
