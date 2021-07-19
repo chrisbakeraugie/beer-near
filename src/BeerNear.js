@@ -116,10 +116,14 @@ const BeerNear = () => {
    * @param {object} place (google geometry result from address search)
    */
   const handleAddressSelected = (place) => {
-    setClientCoords({
-      lat: Math.trunc(place.geometry.location.lat() * 10000) / 10000,
-      lng: Math.trunc(place.geometry.location.lng() * 10000) / 10000
-    });
+    if (!place.geometry) {
+      alert("Please select address from dropdown list");
+    } else {
+      setClientCoords({
+        lat: Math.trunc(place.geometry.location.lat() * 10000) / 10000,
+        lng: Math.trunc(place.geometry.location.lng() * 10000) / 10000
+      });
+    }
   };
 
   /**
