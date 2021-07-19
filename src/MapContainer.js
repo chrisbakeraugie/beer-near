@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
 
@@ -33,17 +34,17 @@ export class MapContainer extends React.Component {
       return {
         width: "80vw",
         height: "70vh"
-      }
+      };
     } else {
       return {
         width: "40vw",
         height: "65vh"
-      }
+      };
     }
   }
 
   onReady = () => {
-    this.props.makeBounds()
+    this.props.makeBounds();
   }
 
   render() {
