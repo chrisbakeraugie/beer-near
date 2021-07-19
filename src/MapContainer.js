@@ -37,7 +37,7 @@ export class MapContainer extends React.Component {
       };
     } else {
       return {
-        width: "40vw",
+        width: "24vw",
         height: "65vh"
       };
     }

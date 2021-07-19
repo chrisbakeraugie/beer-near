@@ -29,11 +29,20 @@ code {
   color: white;
 }
 
+.nav{
+  background-color: rgb(209, 209, 209);
+}
+
+.nav-link{
+  color: black;
+}
+
 /* --------------------------About Page----------------------------------- */
 
 .about-page {
   max-width: 650px;
   margin: auto;
+  margin-bottom: 40px;
   padding: 10px;
   padding-top: 20px;
 }
@@ -192,7 +201,7 @@ code {
 }
 
 .brewery-container {
-  margin: 10px;
+  margin: auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1.2fr 1.3fr 0.9fr 0.6fr;
@@ -204,6 +213,7 @@ code {
   border-radius: 10mm;
   border-top-left-radius: 0mm;
   border-bottom-left-radius: 0mm;
+  max-width: 60vw;
 }
 
 #website-link {
@@ -312,6 +322,8 @@ code {
   /* --------------------------Beer Components----------------------------------- */
   .brewery-container {
     height: unset;
+    margin: 10px;
+    max-width: unset;
     background-color: unset;
     background-image: linear-gradient(rgb(248, 237, 214) 20%, rgba(255, 166, 0, 0.267) 21%, orange 22%);
     display: grid;

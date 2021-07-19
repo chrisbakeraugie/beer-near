@@ -10,7 +10,7 @@ const About = () => {
         <strong>But wait!</strong> Searching &ldquo;Beer&ldquo; online gives too many results, and you just want breweries and taprooms.
       <br />
         <br />
-        Well, panic no longer. Beer Near will show you the nearest <a href="https://www.brewersassociation.org/">Brewers Association</a> registered breweries to you, using your current location or any address you choose. Just click the beer-shaped button on the app&apos;s main page, and it will find you location&apos; nearest breweries. To look at other locations, just use the address search first.
+        Well, panic no longer. Beer Near will show you the nearest <a href="https://www.brewersassociation.org/">Brewers Association</a> registered breweries to you, using your current location or any address you choose. Just click the beer-shaped button on the app&apos;s main page, and it will find your location&apos;s nearest breweries. To look at other locations, just use the address search first.
       </p>
       <h3>Go get a beer!</h3>
       <br />
@@ -21,8 +21,11 @@ const About = () => {
       <p><strong>This app doesn&apos;t actively collect your data.</strong> However, it does use Google (and other) resources to function.</p>
       <h4>Resources</h4>
       <p>Data delivered by the <a href="https://www.openbrewerydb.org/" target="_blank" rel="noopener noreferrer">Open Brewery DB</a>, a free open source API.</p>
+      <p>Maps and locations provided with <a href="https://developers.google.com/maps" target="_blank" rel="noopener noreferrer">Google Maps Platform</a></p>
       <p>Map Markers customized with the <a href="https://mapmarker.io/" target="_blank" rel="noopener noreferrer">MapMarker.io</a> API</p>
       <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+      <br />
+      <p>This app was made using Node.JS, React.JS, Bootstrap, and Google-Maps-React</p>
     </div>
   );
 };

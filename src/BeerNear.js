@@ -68,12 +68,14 @@ const BeerNear = () => {
   const handleStart = async () => {
     setIsLoading(true);
     if (clientCoords.lat !== undefined || clientCoords.lng !== undefined) {
-      fetch(`${BREWERY_API_BASE}?${BREWERY_API_BY_DISTANCE}${clientCoords.lat},${clientCoords.lng}`)
-        .then(res => res.json()).then(result => {
-          setBreweries(result);
-          setErr(0);
-          setIsLoading(false);
-        });
+      setTimeout(() => {
+        fetch(`${BREWERY_API_BASE}?${BREWERY_API_BY_DISTANCE}${clientCoords.lat},${clientCoords.lng}`)
+          .then(res => res.json()).then(result => {
+            setBreweries(result);
+            setErr(0);
+            setIsLoading(false);
+          });
+      }, 2000);
     } else {
       try {
         const coords = await getClientCoords();

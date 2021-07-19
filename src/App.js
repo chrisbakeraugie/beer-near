@@ -20,7 +20,7 @@ function App() {
         <div>
           <ul className="nav nav-tabs justify-content-center" style={{ margin: "5px" }}>
             <Link to="/" className="nav-link">Find me a beer</Link>
-            <li className="nav-link"><Link to="/about">About this app</Link></li>
+            <Link to="/about" className="nav-link">About this app</Link>
           </ul>
         </div>
 
